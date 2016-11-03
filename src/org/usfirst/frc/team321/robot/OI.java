@@ -1,10 +1,14 @@
 package org.usfirst.frc.team321.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -19,17 +23,27 @@ public class OI {
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
     // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	
+	public static Joystick driveStick, maniStick;
+	public static JoystickButton[] driveBtn, maniBtn;
+	
+	public OI() {
+		//Creates a drive joystick with port 0
+		driveStick = new Joystick(0);
+		//Creates a manipulator joystick with port 1
+		maniStick = new Joystick(1);
+		
+		//Makes x amount of buttons for the drive controller
+		for (int i = 0; i < driveBtn.length; i++) {
+			driveBtn[i] = new JoystickButton(driveStick, i++);
+		}
+		
+		//Makes x amount of buttons for the manipulator controller
+		for (int i = 0; i < maniBtn.length; i++) {
+			maniBtn[i] = new JoystickButton(maniStick, i++);
+		}
+	}
 }
-
