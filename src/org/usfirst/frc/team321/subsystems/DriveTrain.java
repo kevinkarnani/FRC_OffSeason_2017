@@ -19,8 +19,8 @@ public class DriveTrain extends Subsystem {
 	public SpeedController leftFront, leftMiddle, leftBack, rightFront, rightMiddle, rightBack;
 	public Encoder leftEncoder, rightEncoder;
 	
-	private static double MAX_POWER = 1.0;
-	private static double MIN_POWER = -1.0;
+	private static final double MAX_POWER = 1.0;
+	private static final double MIN_POWER = -1.0;
 	private static double kP = 0.0,
 	                      kI = 0.0,
 	                      kD = 0.0;
@@ -37,8 +37,8 @@ public class DriveTrain extends Subsystem {
             rightMiddle = new Talon(RobotMap.RIGHT_MIDDLE_MOTOR);
             rightBack = new Talon(RobotMap.RIGHT_BACK_MOTOR);
             
-            leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_ONE, RobotMap.LEFT_ENCODER_TWO);
-            rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_ONE, RobotMap.RIGHT_ENCODER_TWO);
+            leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_A, RobotMap.LEFT_ENCODER_B);
+            rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_A, RobotMap.RIGHT_ENCODER_B);
             
             leftEncoder.start();
             rightEncoder.start();
@@ -55,14 +55,14 @@ public class DriveTrain extends Subsystem {
      * @param rightPower Sets the power to the right side of the robot
      */
     public void setMotorPower(double leftPower, double rightPower){
-    	leftFront.set(MathUtil.sqrt(MathUtil.range(leftPower, MIN_POWER, MAX_POWER)));
-    	leftMiddle.set(MathUtil.sqrt(MathUtil.range(leftPower, MIN_POWER, MAX_POWER)));
-    	leftBack.set(MathUtil.sqrt(MathUtil.range(leftPower, MIN_POWER, MAX_POWER)));
+    	leftFront.set(normalizeMotorValue(leftPower, MIN_POWER, MAX_POWER)));
+    	leftMiddle.set(normalizeMotorValue(leftPower, MIN_POWER, MAX_POWER)));
+    	leftBack.set(normalizeMotorValue(leftPower, MIN_POWER, MAX_POWER)));
     	
     	//Inverts the right motor
-    	rightFront.set(-MathUtil.sqrt(MathUtil.range(rightPower, MIN_POWER, MAX_POWER)));
-    	rightMiddle.set(-MathUtil.sqrt(MathUtil.range(rightPower, MIN_POWER, MAX_POWER)));
-    	rightBack.set(-MathUtil.sqrt(MathUtil.range(rightPower, MIN_POWER, MAX_POWER)));
+    	rightFront.set(-normalizeMotorValue(rightPower, MIN_POWER, MAX_POWER)));
+    	rightMiddle.set(-normalizeMotorValue(rightPower, MIN_POWER, MAX_POWER)));
+    	rightBack.set(-normalizeMotorValue(rightPower, MIN_POWER, MAX_POWER)));
     }
 
 	public Encoder getLeftEncoderValue() {
@@ -72,4 +72,15 @@ public class DriveTrain extends Subsystem {
 	public Encoder getRightEncoderValue() {
 		return rightEncoder.get();
 	}   
+	
+	/**
+	 * Returns a normalized value in between a range of numbers
+	 * @param power The power to set the motor to
+	 * @param minPower The minimum power
+	 * @param maxPower The maximum power
+	 * @return
+	 */
+	public double normalizeMotorValue(double power, double minPower, double maxPower){
+		return MathUtil.square(MathUtil.range(power, minPower, maxPower));
+	}
 }
