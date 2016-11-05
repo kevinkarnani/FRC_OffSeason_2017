@@ -6,4 +6,20 @@ package org.usfirst.frc.team321.robot;
  * floating around.
  */
 public class RobotMap {
+	
+	//Motor ports
+	public static final int LEFT_FRONT_MOTOR = 0;
+	public static final int LEFT_MIDDLE_MOTOR = 1;
+	public static final int LEFT_BACK_MOTOR = 2;
+	
+	public static final int RIGHT_FRONT_MOTOR = 3;
+	public static final int RIGHT_MIDDLE_MOTOR = 4;
+	public static final int RIGHT_BACK_MOTOR = 5;
+	
+	//Encoder ports
+	public static final int LEFT_ENCODER_A = 0;
+	public static final int LEFT_ENCODER_B = 1;
+	
+	public static final int RIGHT_ENCODER_A = 2;
+	public static final int RIGHT_ENCODER_B = 3;
 }
