@@ -27,14 +27,13 @@ public class MathUtil {
 	/**
 	 * Returns the square root of a number.
 	 * 
-	 * <p>If the number is negative, it will return the square root
-	 * of the number with a negative sign. Otherwise, it will
-	 * return a positive number.
+	 * <p>If the number is negative, it will get the square root
+	 * of the positive number multiplied with a negative sign.
 	 * 
 	 * @param num  the number being square rooted
 	 * @return     the square root of a number with its sign
 	 */
-	public static double sqrt(double num) {
+	public static double sqrtKeepSign(double num) {
 		if (num < 0) {
 			return -Math.sqrt(Math.abs(num));
 		} else {
@@ -46,13 +45,12 @@ public class MathUtil {
 	 * Returns a number squared.
 	 * 
 	 * <p>If the number is negative, it will return the number 
-	 * squared with a negative sign. Otherwise, it will return
-	 * a positive number.
+	 * squared multiplied by -1.
 	 * 
 	 * @param num  the number being squared
 	 * @return     the number squared with its sign
 	 */
-	public static double square(double num) {
+	public static double squareKeepSign(double num) {
 		if (num < 0) {
 			return -num * num;
 		} else {

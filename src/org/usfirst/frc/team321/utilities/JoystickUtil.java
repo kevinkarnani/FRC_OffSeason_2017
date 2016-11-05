@@ -110,7 +110,7 @@ public class JoystickUtil {
 	 * @return the x value on the left joystick squared
 	 */
 	public static double getLeftXNormalized() {
-		return MathUtil.square(getLeftXValue());
+		return MathUtil.squareKeepSign(getLeftXValue());
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class JoystickUtil {
 	 * @return the y value on the left joystick squared
 	 */
 	public static double getLeftYNormalized() {
-		return MathUtil.square(getLeftYValue());
+		return MathUtil.squareKeepSign(getLeftYValue());
 	}
 	
 	/**
@@ -146,7 +146,7 @@ public class JoystickUtil {
 	 * @return the x value on the right joystick squared
 	 */
 	public static double getRightXNormalized() {
-		return MathUtil.square(getRightXValue());
+		return MathUtil.squareKeepSign(getRightXValue());
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class JoystickUtil {
 	 * @return the y value on the right joystick squared
 	 */
 	public static double getRightYNormalized() {
-		return MathUtil.square(getRightYValue());
+		return MathUtil.squareKeepSign(getRightYValue());
 	}
 	
 	/**
