@@ -12,7 +12,7 @@ public class JoystickUtil {
 	 */
 	public static double getLeftXValue() {
 		if (Math.abs(OI.driveStick.getRawAxis(0)) > MIN_JOY_VALUE) {
-			return MathUtil.range(OI.driveStick.getRawAxis(0), -1.0, 1.0);
+			return MathUtil.clamp(OI.driveStick.getRawAxis(0), -1.0, 1.0);
 		} else {
 			return 0;
 		}
@@ -29,7 +29,7 @@ public class JoystickUtil {
 	 */
 	public static double getLeftYValue() {
 		if (Math.abs(OI.driveStick.getRawAxis(1)) > MIN_JOY_VALUE) {
-			return MathUtil.range(-OI.driveStick.getRawAxis(1), -1.0, 1.0);
+			return MathUtil.clamp(-OI.driveStick.getRawAxis(1), -1.0, 1.0);
 		} else {
 			return 0;
 		}
@@ -42,7 +42,7 @@ public class JoystickUtil {
 	 */
 	public static double getRightXValue() {
 		if (Math.abs(OI.driveStick.getRawAxis(2)) > MIN_JOY_VALUE) {
-			return MathUtil.range(OI.driveStick.getRawAxis(2), -1.0, 1.0);
+			return MathUtil.clamp(OI.driveStick.getRawAxis(2), -1.0, 1.0);
 		} else {
 			return 0;
 		}
@@ -59,7 +59,7 @@ public class JoystickUtil {
 	 */
 	public static double getRightYValue() {
 		if (Math.abs(OI.driveStick.getRawAxis(3)) > MIN_JOY_VALUE) {
-			return MathUtil.range(-OI.driveStick.getRawAxis(3), -1.0, 1.0);
+			return MathUtil.clamp(-OI.driveStick.getRawAxis(3), -1.0, 1.0);
 		} else {
 			return 0;
 		}
@@ -72,7 +72,7 @@ public class JoystickUtil {
 	 */
 	public static double getManiXValue() {
 		if (Math.abs(OI.maniStick.getRawAxis(0)) > MIN_JOY_VALUE) {
-			return MathUtil.range(OI.maniStick.getRawAxis(0), -1.0, 1.0);
+			return MathUtil.clamp(OI.maniStick.getRawAxis(0), -1.0, 1.0);
 		} else {
 			return 0;
 		}
@@ -89,7 +89,7 @@ public class JoystickUtil {
 	 */
 	public static double getManiYValue() {
 		if (Math.abs(OI.maniStick.getRawAxis(1)) > MIN_JOY_VALUE) {
-			return MathUtil.range(-OI.maniStick.getRawAxis(1), -1.0, 1.0);
+			return MathUtil.clamp(-OI.maniStick.getRawAxis(1), -1.0, 1.0);
 		} else {
 			return 0;
 		}
