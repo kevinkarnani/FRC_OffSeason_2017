@@ -28,6 +28,7 @@ public class Shooter extends Subsystem {
 	 * Used in UseShooter command
 	 */
 	public void setShooterLimit(double power){
+		shooter.set(MathUtil.clamp(power, -1.0, 1.0));
 	}
 
     public void initDefaultCommand() {

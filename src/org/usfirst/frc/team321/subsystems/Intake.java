@@ -46,6 +46,7 @@ public class Intake extends Subsystem {
 	 * Used in UseIntake command
 	 */
 	public void setIntakeLimit(double power){
+		intakeMotor.set(MathUtil.clamp(power, -1.0, 1.0));
 	}
 	
     public void initDefaultCommand() {
