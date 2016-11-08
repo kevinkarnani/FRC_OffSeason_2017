@@ -3,18 +3,18 @@ package org.usfirst.frc.team321.utilities;
 public class MathUtil {
 	
 	/**
-	 * Keeps a number in a range of a set minimum and set maximum
+	 * Keeps a number in a clamp of a set minimum and set maximum
 	 * 
 	 * <p>If a number is above a set maximum, it returns the maximum.
 	 * <p>If a number is below a set minimum, it returns the minimum.
 	 * <p>If a number is between the minimum and maximum, it returns the number.
 	 * 
 	 * @param val  a number being checked
-	 * @param min  the minimum number of the range
-	 * @param max  the maximum number of the range
-	 * @return     a number depending on whether it falls between the range
+	 * @param min  the minimum number of the clamp
+	 * @param max  the maximum number of the clamp
+	 * @return     a number depending on whether it falls between the clamp
 	 */
-	public static <T extends Comparable<T>> T range(T val, T min, T max) {
+	public static <T extends Comparable<T>> T clamp(T val, T min, T max) {
 		if (val.compareTo(min) < 0) {
 		    return min;
 		} else if (val.compareTo(max) > 0) {

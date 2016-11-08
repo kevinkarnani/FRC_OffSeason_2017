@@ -1,71 +1,55 @@
 package org.usfirst.frc.team321.subsystems;
 
 import org.usfirst.frc.team321.robot.RobotMap;
+import org.usfirst.frc.team321.utilities.MathUtil;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *Intake class for the intake of the boulders
+ *Intake class for the intake of the boulders. The intake uses enums as set values for the
+ *intake of boulders to either intake at max power, outtake at max power or just stall. 
  */
 public class Intake extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 	private SpeedController intakeMotor;
-	
-	
 	/**
-	 * @author GalacticArc
 	 * Initializes Intake and calls the motor used for it from the RobotMap Class
 	 */
 	
 	public Intake(){
-		
 		intakeMotor = new Talon(RobotMap.INTAKE_MOTOR);
 		
 	}
 	
 	/**
-	 * @author linw5
-	 *Created enumerations values for the intake 
-	 *Intake into the robot, outtake into the robot, and stall
-	 *Checks if the absolute value of the power is above one or not
-	 *Motor power set to 0.8 as a precaution
-	 *Preset MIN and MAX values for motors for future code
+	 *Creates enum values for the intake 
+	 *Intake into the robot, outtake out of the robot, or stall. 
+	 *These values are used in the Intake command.
 	 */
-	
-	public enum IntakeMovement {
+	public enum IntakeValue {
+		INTAKE(1.0), OUTTAKE(-1.0), STALL(0.0);
 		
+		private double value;
 		
-		INTAKE(0.8), OUTTAKE(-0.8), STALL(0.0);
-		//MAX_INTAKE(1.0), MIN_OUTTAKE(0.0)
-		
-		private double movement;
-		
-		private IntakeMovement(double movement){
-			this.movement = movement;
+		private IntakeValue(double value){
+			this.value = value;
 		}
 		
-		public double getMovement(){
-			return movement;
+		public double getValue(){
+			return value;
 		}
 	} 
+
 	/**
-	 * @param power
-	 * Power of the intake motor cannot exceed one
-	 * If it does, it sets it back to power
+	 * @param power new value of the intake within the limit using MathUtil
+	 * Used in UseIntake command
 	 */
-	public void setMovementLimit(double power) {
-		if(Math.abs(power) <= 1){
-			intakeMotor.set(power); 
-		}
+	public void setIntakeLimit(double power){
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	//setDefaultCommand(new UseIntake());
     	
     }
 }

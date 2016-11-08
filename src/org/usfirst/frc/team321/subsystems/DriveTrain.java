@@ -78,6 +78,6 @@ public class DriveTrain extends Subsystem {
 	 * @return
 	 */
 	public double normalizeMotorValue(double power, double minPower, double maxPower){
-		return MathUtil.squareKeepSign(MathUtil.range(power, minPower, maxPower));
+		return MathUtil.squareKeepSign(MathUtil.clamp(power, minPower, maxPower));
 	}
 }

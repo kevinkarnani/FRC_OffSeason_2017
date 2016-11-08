@@ -1,51 +1,36 @@
 package org.usfirst.frc.team321.subsystems;
 
 import org.usfirst.frc.team321.robot.RobotMap;
+import org.usfirst.frc.team321.utilities.MathUtil;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-
 /**
- *Shooter class for the shooter of the robot
+ *Shooter class for the shooter of the robot which takes boulders
+ *from the shooter motor and shoots it. It incorporates PID and commands
+ *to guide it towards the high goal.
  */
 public class Shooter extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	private SpeedController shooter;
 	
-	private SpeedController roboShooter1, roboShooter2;
-
-	
-
 /**
- * Retrieves the motors used for the shooters from the RobotMap
+ * Retrieves the shooter motor from the RobotMap
  */
-	
 	public Shooter(){
-		
-		roboShooter1 = new Talon(RobotMap.LEFT_SHOOTER);
-		roboShooter2 = new Talon(RobotMap.RIGHT_SHOOTER);
+		shooter = new Talon(RobotMap.SHOOTER);
 		
 	}
+
 	/**
-	 * @param power
-	 * Motor power cannot exceed 1, sets it less than one if it does
+	 * @param power value of the motor being checked
+	 * Used in UseShooter command
 	 */
-	public void shootingLimit(double power){
-		
-		if(Math.abs(power) <= 1){
-			
-			roboShooter1.set(power);
-			roboShooter2.set(power);
-		}
-		
+	public void setShooterLimit(double power){
 	}
-	
+
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	
+    	//setDefaultCommand(new UseShooter());
     }
 }

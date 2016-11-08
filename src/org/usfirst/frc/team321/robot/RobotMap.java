@@ -17,8 +17,7 @@ public class RobotMap {
 	public static final int RIGHT_BACK_MOTOR = 5;
 	
 	//Shooter ports
-	public static final int LEFT_SHOOTER = 6;
-	public static final int RIGHT_SHOOTER = 7;
+	public static final int SHOOTER = 6;
 	
 	//Intake port
 	public static final int INTAKE_MOTOR = 8;
