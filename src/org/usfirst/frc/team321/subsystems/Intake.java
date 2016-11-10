@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *Intake class for the intake of the boulders. The intake uses enums as set values for the
- *intake of boulders to either intake at max power, outtake at max power or just stall. 
+*Intake class for the intake of the boulders. The intake uses enums as set values for the
+*intake of boulders to either intake at max power, outtake at max power or just stall. 
  */
 public class Intake extends Subsystem {
 	private SpeedController intakeMotor;
@@ -19,7 +19,6 @@ public class Intake extends Subsystem {
 	
 	public Intake(){
 		intakeMotor = new Talon(RobotMap.INTAKE_MOTOR);
-		
 	}
 	
 	/**
@@ -51,6 +50,5 @@ public class Intake extends Subsystem {
 	
     public void initDefaultCommand() {
     	//setDefaultCommand(new UseIntake());
-    	
     }
 }
