@@ -1,5 +1,7 @@
 package org.usfirst.frc.team321.robot;
 
+import java.io.IOException;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -35,6 +37,9 @@ public class OI {
 		driveStick = new Joystick(0);
 		//Creates a manipulator joystick with port 1
 		maniStick = new Joystick(1);
+		
+		driveBtn = new JoystickButton[12];
+		maniBtn = new JoystickButton[12];
 		
 		//Makes x amount of buttons for the drive controller
 		for (int i = 0; i < driveBtn.length; i++) {

@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team321.robot;
 
+import org.usfirst.frc.team321.subsystems.DriveTrain;
 import org.usfirst.frc.team321.subsystems.Intake;
 import org.usfirst.frc.team321.subsystems.Shooter;
 
@@ -23,9 +24,10 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Intake intake;
 	public static Shooter shooter;
+	public static DriveTrain driveTrain;
 	Command autonomousCommand;
     SendableChooser chooser;
-
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -35,6 +37,7 @@ public class Robot extends IterativeRobot {
 		intake = new Intake();
 		shooter = new Shooter();
         chooser = new SendableChooser();
+        driveTrain = new DriveTrain();
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
     }
