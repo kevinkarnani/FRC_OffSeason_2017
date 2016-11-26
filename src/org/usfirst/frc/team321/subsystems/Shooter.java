@@ -14,13 +14,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 	private SpeedController shooter;
+	private static final int MAX_RPM = 18730;
+	private static final double MAX_RADIANS_PER_SEC = (MAX_RPM * Math.PI) / 60;
+	//Arbitrary radius number; Fix later
+	private static final double WHEEL_RADIUS = 0.20;
 	
-/**
- * Retrieves the shooter motor from the RobotMap
- */
+	/**
+	 * Retrieves the shooter motor from the RobotMap
+	 */
 	public Shooter(){
 		shooter = new Talon(RobotMap.SHOOTER);
-		
 	}
 
 	/**
@@ -33,5 +36,13 @@ public class Shooter extends Subsystem {
 
     public void initDefaultCommand() {
     	//setDefaultCommand(new UseShooter());
+    }
+    
+    public void setShooterVelocity(double velocity) {
+    	double radiansPerSec = velocity / WHEEL_RADIUS;
+    	double powerPercent = radiansPerSec / MAX_RADIANS_PER_SEC;
+    	powerPercent = MathUtil.sqrtKeepSign(powerPercent);
+    	
+    	this.setShooterLimit(powerPercent);
     }
 }
