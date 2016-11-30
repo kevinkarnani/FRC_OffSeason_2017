@@ -7,14 +7,16 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
-*Intake class for the intake of the boulders. The intake uses enums as set values for the
-*intake of boulders to either intake at max power, outtake at max power or just stall. 
- */
+ /**
+  * Intake class for the intake of the boulders. Uses enums as set values
+  * to either intake at max power, outtake at max power, or just stall.
+  */
+
 public class Intake extends Subsystem {
 	private SpeedController intakeMotor;
+	
 	/**
-	 * Initializes Intake and calls the motor used for it from the RobotMap Class
+	 * Initializes Intake and calls the motor used for it from the RobotMap Class.
 	 */
 	
 	public Intake(){
@@ -22,10 +24,13 @@ public class Intake extends Subsystem {
 	}
 	
 	/**
-	 *Creates enum values for the intake 
-	 *Intake into the robot, outtake out of the robot, or stall. 
-	 *These values are used in the Intake command.
+	 * Creates enum values for the intake.
+	 * Setting a positive value will intake the boulder into the robot.
+	 * Setting a negative value will outtake the boulder from the robot.
+	 * Setting a value of 0 will stall.
+	 * These values are used in the Intake command.
 	 */
+	
 	public enum IntakeValue {
 		INTAKE(1.0), OUTTAKE(-1.0), STALL(0.0);
 		
@@ -41,9 +46,12 @@ public class Intake extends Subsystem {
 	} 
 
 	/**
-	 * @param power new value of the intake within the limit using MathUtil
+	 * @param power Value for the intake must be within.
+	 * the limit using MathUtil's clamp method, which
+	 * creates a set range of which values can be used.
 	 * Used in UseIntake command
 	 */
+	
 	public void setIntakeLimit(double power){
 		intakeMotor.set(MathUtil.clamp(power, -1.0, 1.0));
 	}
