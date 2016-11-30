@@ -16,9 +16,12 @@ import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SerialPort;
 
-/**
- *
- */
+ /**
+   * The DriveTrain class handles movement with the
+   * drive base of the robot, which is a 6-wheel
+   * west coast drive.
+   */
+
 public class DriveTrain extends Subsystem {
 
 	// Put methods for controlling this subsystem
@@ -74,13 +77,14 @@ public class DriveTrain extends Subsystem {
 	}
 
 	/**
-	 * Makes the robot move
-	 * 
+	 * Sets power to the motor and makes the robot move.
+	 *
 	 * @param leftPower
 	 *            Sets the power to the left side of the robot
 	 * @param rightPower
 	 *            Sets the power to the right side of the robot
 	 */
+	
 	public void setMotorPower(double leftPower, double rightPower) {
 		leftFront.set(normalizeMotorValue(leftPower, MIN_POWER, MAX_POWER));
 		leftMiddle.set(normalizeMotorValue(leftPower, MIN_POWER, MAX_POWER));
@@ -104,13 +108,15 @@ public class DriveTrain extends Subsystem {
 	 * Returns a normalized value in between a range of numbers
 	 * 
 	 * @param power
-	 *            The power to set the motor to
+	 *            The power the motor is set to.
 	 * @param minPower
-	 *            The minimum power
+	 *            The minimum power -1.
 	 * @param maxPower
-	 *            The maximum power
+	 *            The maximum power 1.
 	 * @return
+	 *            The power if within the the range.
 	 */
+	
 	public double normalizeMotorValue(double power, double minPower, double maxPower) {
 		return MathUtil.squareKeepSign(MathUtil.clamp(power, minPower, maxPower));
 	}
@@ -131,25 +137,29 @@ public class DriveTrain extends Subsystem {
 	}
 
 	/**
-	 * Convert cm of robot movement to encoder movement in degrees
+	 * Converts the robot movement in centimeters to encoder movement in degrees.
 	 * 
 	 * @param cm
 	 * @param wheelCircumference
-	 *            the circumference of the wheels
+	 *            The circumference of the wheels.
 	 * @return
+	 *            The encoder movement in degrees.
 	 */
+	
 	public double distanceToEncDegrees(double distance) {
 		return (distance * 360) / (wheelCircumference);
 	}
 
 	/**
-	 * Convert cm of robot movement to encoder rotations
+	 * Convert cm of robot movement to rotations by the encoder.
 	 * 
 	 * @param cm
 	 * @param wheelCircumference
-	 *            the circumference of the wheels
+	 *            The circumference of the wheels.
 	 * @return
+	 *            The displacement of the encoder.
 	 */
+	
 	public double encDistanceToDistance(double encDistance) {
 		return (encDistance / 360) * wheelCircumference;
 	}
