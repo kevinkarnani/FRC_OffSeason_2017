@@ -34,11 +34,13 @@ public class DriveTrain extends Subsystem {
 	/**
 	 * Circumference of the wheel in cm
 	 */
+	
 	public final double wheelCircumference = 19.939 * Math.PI;
 
 	/**
 	 * How many encoder ticks to go 1 cm
 	 */
+	
 	public final double ticksPerCm = 360 / wheelCircumference;
 
 	private static final double MAX_POWER = 1.0;
@@ -60,10 +62,12 @@ public class DriveTrain extends Subsystem {
 		leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_A, RobotMap.LEFT_ENCODER_B);
 		rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_A, RobotMap.RIGHT_ENCODER_B);
 		leftEncoder.setReverseDirection(true);
+		
 		/*
 		 * navX = new AHRS(SerialPort.Port.kMXP); navX.reset();
 		 * navX.resetDisplacement();
 		 */
+		
 		leftEncoder.reset();
 		rightEncoder.reset();
 	}
@@ -110,11 +114,12 @@ public class DriveTrain extends Subsystem {
 	 * @param power
 	 *            The power the motor is set to.
 	 * @param minPower
-	 *            The minimum power -1.
+	 *            The minimum possible power the motor can be set to.
 	 * @param maxPower
-	 *            The maximum power 1.
+	 *            The maximum possible power the motor can be set to.
 	 * @return
-	 *            The power if within the the range.
+	 *            The power squared within the range of minPower and 
+	 *            maxPower with the sign of the original value.
 	 */
 	
 	public double normalizeMotorValue(double power, double minPower, double maxPower) {
